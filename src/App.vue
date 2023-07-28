@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Tweet :tweet="tweets[0]"/>
+    <Tweet :user="tweets[0].user" :timestamp="tweets[0].timestamp" :message="tweets[0].message"/>
   </div>
 </template>
 

@@ -1,33 +1,28 @@
 <script setup>
 import { defineProps } from "vue";
-const props = defineProps({
-  tweet: Object,
-});
+import User from "./User.vue";
+import ProfileImage from "./ProfileImage.vue";
+import Timestamp from "./Timestamp.vue";
+import Message from "./Message.vue";
 
-const name = props.tweet.user.name;
-const image = props.tweet.user.image;
-const handle = props.tweet.user.handle;
-const timestamp = props.tweet.timestamp;
-const message = props.tweet.message;
+const props = defineProps({
+  user: Object,
+  timestamp: String,
+  message: String,
+});
 </script>
 
 <template>
   <div class="tweet">
-    <img :src="image" class="profile" alt="profile" />
+    <ProfileImage :image="user.image" />
 
     <div class="body">
       <div class="top">
-        <span class="user">
-          <span class="name"> {{ name }}</span>
-          <span class="handle">{{ handle }}</span>
-        </span>
-
-        <span class="timestamp">{{ timestamp }}</span>
+        <User :userData="user" />
+        <Timestamp :timestamp="timestamp" />
       </div>
 
-      <p class="message">
-        {{ message }}
-      </p>
+      <Message :message="message" />
 
       <div class="actions">
         <!-- Font Awesome icons -->
